@@ -1,0 +1,88 @@
+﻿@model KSystem.Model.DefaultReportModel
+<script>
+    function OnSuccessCreateReport(data) {
+        if (data.responseJSON.result == "FALSE") {
+            showValidationMessage(data.responseJSON.message, 350, 130);
+        } else {
+            $('#reportSlideWindow').hide();
+            $("#ReasonForDisarming").removeClass("select");
+        }
+    }
+</script>
+@using (Ajax.BeginForm(new AjaxOptions
+{
+    Url = @Url.Action("ReasonForDisarmingReport"),
+    HttpMethod = "POST",
+    UpdateTargetId = "forReportBlock",
+    OnComplete = "OnSuccessCreateReport",
+    LoadingElementId = "loadContainer"
+}))
+{
+    <div class="rowHeader">
+        <label>Временной интервал</label>
+    </div>
+    <div id="createReportContent">
+        <div class="rowForDateInput">
+            <label>Начало</label>
+        </div>
+        <div class="row">
+            @Html.InputDate(model => model.Date.StartDate, model => model.Date.StartDateHourses, model => model.Date.StartDateMinutes)
+            @Html.ValidationMessageFor(model => model.Date.StartDate)
+        </div>
+        <div class="rowForDateInput">
+            <label>Конец</label>
+        </div>
+        <div class="row">
+            @Html.InputDate(model => model.Date.EndDate, model => model.Date.EndDateHourses, model => model.Date.EndDateMinutes)
+            @Html.ValidationMessageFor(model => model.Date.EndDate)
+        </div>
+        <div class="row" style="margin-top: 15px;">
+            <a id="cancel" style="float: left" class="button grey">Отмена</a>
+            <input type="submit" id="ok" class="button blue" value="Построить" />      
+        </div>
+    </div>
+
+
+    <div class="rowHeader">
+        <div id="objectsCheckbox" class="checkbox on"></div>
+        <label>Объекты</label>
+    </div>
+    <div class="houseMenuForCreateReport">
+        @for (var i = 0; i < Model.Houses.Count; i++)
+        { 
+            <div class="item">
+                @Html.HiddenFor(model => model.Houses[i].Id)
+                @Html.HiddenFor(model => model.Houses[i].Number)
+                @Html.HiddenFor(model => model.Houses[i].Street)
+                @Html.ImageCheckbox(model => model.Houses[i].LabelForValue, "checkbox")
+                <label>@Model.Houses[i].Street @Model.Houses[i].Number </label>
+            </div>
+        }
+    </div>
+}
+<script>
+    $("#createReportContent #cancel").bind("click", function () {
+        $("#reportSlideWindow").empty();
+        $("#reportSlideWindow").animate({ width: "0px" }, "fast",
+                    function () {
+                        $("#reportSlideWindow").css("display", "none");                
+                        $("#ReasonForDisarming").removeClass("select");
+                    });
+    })
+    $("#objectsCheckbox").bind("click", function () {
+        if ($(this).hasClass("on")) {
+            $(".houseMenuForCreateReport .checkbox").removeClass("on").addClass("off").children().val(0);
+        } else {
+            $(".houseMenuForCreateReport .checkbox").removeClass("off").addClass("on").children().val(1);
+        }
+    })
+
+    $("#reportSlideWindow .checkbox").bind("click", function () {
+        if ($(this).hasClass("on")) {
+            $(this).removeClass("on").addClass("off").children().val(0);
+        } else {
+            $(this).removeClass("off").addClass("on").children().val(1);
+        }
+    })
+
+</script>

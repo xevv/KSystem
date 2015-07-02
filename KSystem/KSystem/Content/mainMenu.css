@@ -1,0 +1,58 @@
+﻿.mainMenu,
+.houseMenuForCreateReport {
+    display: block;
+}
+
+/*.mainMenu .item:hover {
+    background-color:#F0F0F0;
+}*/
+
+.mainMenu .item.select {
+    background-color:#EEEEEE;
+}
+
+.mainMenu .item {
+    display: block;
+    padding:6px 6px 9px 12px;
+    cursor:pointer;
+    height:18px;
+}
+
+
+
+.mainMenu .item .text {
+    padding-top:2px;
+    font-weight:normal;
+    float:left;
+}
+
+.houseMenuForCreateReport .item {
+    display:block;
+    height:19px;
+    padding:3px 10px 3px 10px;
+    padding-left:7px;
+    font-size:1.1em;
+}
+
+.iconContainer {
+    float:right;
+}
+
+.lock {
+    width:24px;
+    height:24px;
+}
+
+.lock.on {
+    background-image:url("/Image/mainMenu/lock_on.png");
+}
+
+.lock.off {
+    background-image:url("/Image/mainMenu/lock_off.png");
+}
+
+
+
+.menuBlock {
+    display:block;
+}

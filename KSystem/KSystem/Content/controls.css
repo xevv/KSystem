@@ -1,0 +1,101 @@
+﻿.inputDateContainer {
+    width:286px;
+    float:left;
+}
+
+.inputDate {
+    width:72px;
+    height:15px;
+    cursor:pointer;
+    padding-left:11px;
+    float:left
+}
+
+.icon {
+    background:#FFFFFF;
+    width:27px;
+    height:19px;
+    float:left;
+    cursor:pointer;
+    border:1px solid #E5E5E5;
+    border-left:none;
+}
+
+.icon div {
+    background-image: url('/Image/controls/cal.png');
+    margin-top:4px;
+    margin-left:8px;
+    width:11px;
+    height:12px;
+}
+
+label.gap {
+    padding-top:2px;
+    display:block;
+    float:left;
+    margin-left:9px;
+    margin-right:6px;
+    float:left
+}
+
+select.inputTime {
+    height:22px;
+    cursor:pointer;
+    float:left;
+    padding:1px;
+    position:relative;
+    width:52px;
+    padding-left:5px;
+}
+
+.switch {
+    margin-left:5px;
+    margin-top:5px;
+    width:40px;
+    height:16px;
+    float:left;
+    cursor:pointer;
+}
+
+.checkbox {
+    width:16px;
+    height:16px;
+    float:left;
+    margin-right:8px
+}
+
+.switch.on {
+    background-image:url("/Image/controls/switch_on.png");
+}
+
+.switch.off {
+    background-image:url("/Image/controls/switch_off.png");
+}
+
+.checkbox.on {
+    background-image:url("/Image/controls/checkbox_on.png");
+}
+
+.checkbox.off {
+    background-image:url("/Image/controls/checkbox_off.png");
+}
+
+input[type="checkbox"] {
+    display:none;            
+}
+
+input[type="checkbox"] + label::before {
+    content: "";
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background-image: url("/Image/controls/checkbox_off.png");
+    background-repeat: no-repeat;
+    margin-right:8px;
+}
+
+input[type="checkbox"]:checked + label::before {
+    background-image: url("/Image/controls/checkbox_on.png");
+}
+
+

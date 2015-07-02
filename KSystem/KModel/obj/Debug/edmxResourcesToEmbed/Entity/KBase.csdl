@@ -1,0 +1,695 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KBaseModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="KBaseEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="KBaseModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="KBaseModel.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="KBaseModel.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="KBaseModel.AspNetUserLogins" />
+    <EntitySet Name="AspNetUsers" EntityType="KBaseModel.AspNetUsers" />
+    <EntitySet Name="City" EntityType="KBaseModel.City" />
+    <EntitySet Name="Device" EntityType="KBaseModel.Device" />
+    <EntitySet Name="DeviceHouse" EntityType="KBaseModel.DeviceHouse" />
+    <EntitySet Name="DeviceModel" EntityType="KBaseModel.DeviceModel" />
+    <EntitySet Name="Door" EntityType="KBaseModel.Door" />
+    <EntitySet Name="Error" EntityType="KBaseModel.Error" />
+    <EntitySet Name="House" EntityType="KBaseModel.House" />
+    <EntitySet Name="HouseUser" EntityType="KBaseModel.HouseUser" />
+    <EntitySet Name="NetworkStatus" EntityType="KBaseModel.NetworkStatus" />
+    <EntitySet Name="Org" EntityType="KBaseModel.Org" />
+    <EntitySet Name="Premises" EntityType="KBaseModel.Premises" />
+    <EntitySet Name="ReasonForDisarming" EntityType="KBaseModel.ReasonForDisarming" />
+    <EntitySet Name="Region" EntityType="KBaseModel.Region" />
+    <EntitySet Name="Report" EntityType="KBaseModel.Report" />
+    <EntitySet Name="SensorDry" EntityType="KBaseModel.SensorDry" />
+    <EntitySet Name="SensorDryData" EntityType="KBaseModel.SensorDryData" />
+    <EntitySet Name="SensorDryType" EntityType="KBaseModel.SensorDryType" />
+    <EntitySet Name="SensorDryValueType" EntityType="KBaseModel.SensorDryValueType" />
+    <EntitySet Name="sysdiagrams" EntityType="KBaseModel.sysdiagrams" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="KBaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="KBaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_Org" Association="KBaseModel.FK_AspNetUsers_Org">
+      <End Role="Org" EntitySet="Org" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HouseUser_User" Association="KBaseModel.FK_HouseUser_User">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="HouseUser" EntitySet="HouseUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReasonForDisarming_User" Association="KBaseModel.FK_ReasonForDisarming_User">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="ReasonForDisarming" EntitySet="ReasonForDisarming" />
+    </AssociationSet>
+    <AssociationSet Name="FK_House_City" Association="KBaseModel.FK_House_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="House" EntitySet="House" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Org_City" Association="KBaseModel.FK_Org_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Org" EntitySet="Org" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Device_DeviceModel" Association="KBaseModel.FK_Device_DeviceModel">
+      <End Role="DeviceModel" EntitySet="DeviceModel" />
+      <End Role="Device" EntitySet="Device" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeviceHouse_Device" Association="KBaseModel.FK_DeviceHouse_Device">
+      <End Role="Device" EntitySet="Device" />
+      <End Role="DeviceHouse" EntitySet="DeviceHouse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Error_Device" Association="KBaseModel.FK_Error_Device">
+      <End Role="Device" EntitySet="Device" />
+      <End Role="Error" EntitySet="Error" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NetworkStatus_Device" Association="KBaseModel.FK_NetworkStatus_Device">
+      <End Role="Device" EntitySet="Device" />
+      <End Role="NetworkStatus" EntitySet="NetworkStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sensor_Device" Association="KBaseModel.FK_Sensor_Device">
+      <End Role="Device" EntitySet="Device" />
+      <End Role="SensorDry" EntitySet="SensorDry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeviceHouse_House" Association="KBaseModel.FK_DeviceHouse_House">
+      <End Role="House" EntitySet="House" />
+      <End Role="DeviceHouse" EntitySet="DeviceHouse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SensorDry_Door" Association="KBaseModel.FK_SensorDry_Door">
+      <End Role="Door" EntitySet="Door" />
+      <End Role="SensorDry" EntitySet="SensorDry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_House_Org" Association="KBaseModel.FK_House_Org">
+      <End Role="Org" EntitySet="Org" />
+      <End Role="House" EntitySet="House" />
+    </AssociationSet>
+    <AssociationSet Name="FK_House_Region" Association="KBaseModel.FK_House_Region">
+      <End Role="Region" EntitySet="Region" />
+      <End Role="House" EntitySet="House" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HouseUser_House" Association="KBaseModel.FK_HouseUser_House">
+      <End Role="House" EntitySet="House" />
+      <End Role="HouseUser" EntitySet="HouseUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Org_Region" Association="KBaseModel.FK_Org_Region">
+      <End Role="Region" EntitySet="Region" />
+      <End Role="Org" EntitySet="Org" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SensorDry_Premises" Association="KBaseModel.FK_SensorDry_Premises">
+      <End Role="Premises" EntitySet="Premises" />
+      <End Role="SensorDry" EntitySet="SensorDry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReasonForDisarming_SensorDry" Association="KBaseModel.FK_ReasonForDisarming_SensorDry">
+      <End Role="SensorDry" EntitySet="SensorDry" />
+      <End Role="ReasonForDisarming" EntitySet="ReasonForDisarming" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SensorDry_SensorDryType" Association="KBaseModel.FK_SensorDry_SensorDryType">
+      <End Role="SensorDryType" EntitySet="SensorDryType" />
+      <End Role="SensorDry" EntitySet="SensorDry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SensorDryData_SensorDry" Association="KBaseModel.FK_SensorDryData_SensorDry">
+      <End Role="SensorDry" EntitySet="SensorDry" />
+      <End Role="SensorDryData" EntitySet="SensorDryData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SensorDryType_SensorDryValueType" Association="KBaseModel.FK_SensorDryType_SensorDryValueType">
+      <End Role="SensorDryValueType" EntitySet="SensorDryValueType" />
+      <End Role="SensorDryType" EntitySet="SensorDryType" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="KBaseModel.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="KBaseModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="KBaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="KBaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="FIO" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Org" Type="Int32" Nullable="false" />
+    <Property Name="CallTimeStart" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="CallTimeEnd" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="NotificationPhone" Type="Int32" Nullable="false" />
+    <Property Name="NotificationEmail" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="TestInt" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="KBaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="KBaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="Org1" Relationship="KBaseModel.FK_AspNetUsers_Org" FromRole="AspNetUsers" ToRole="Org" />
+    <NavigationProperty Name="HouseUser" Relationship="KBaseModel.FK_HouseUser_User" FromRole="AspNetUsers" ToRole="HouseUser" />
+    <NavigationProperty Name="ReasonForDisarming" Relationship="KBaseModel.FK_ReasonForDisarming_User" FromRole="AspNetUsers" ToRole="ReasonForDisarming" />
+    <NavigationProperty Name="AspNetRoles" Relationship="KBaseModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="House" Relationship="KBaseModel.FK_House_City" FromRole="City" ToRole="House" />
+    <NavigationProperty Name="Org" Relationship="KBaseModel.FK_Org_City" FromRole="City" ToRole="Org" />
+  </EntityType>
+  <EntityType Name="Device">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IpAddress" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="SerialNumber" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="FirmwareVersion" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="MacAddress" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Model" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DeviceModel" Relationship="KBaseModel.FK_Device_DeviceModel" FromRole="Device" ToRole="DeviceModel" />
+    <NavigationProperty Name="DeviceHouse" Relationship="KBaseModel.FK_DeviceHouse_Device" FromRole="Device" ToRole="DeviceHouse" />
+    <NavigationProperty Name="Error" Relationship="KBaseModel.FK_Error_Device" FromRole="Device" ToRole="Error" />
+    <NavigationProperty Name="NetworkStatus" Relationship="KBaseModel.FK_NetworkStatus_Device" FromRole="Device" ToRole="NetworkStatus" />
+    <NavigationProperty Name="SensorDry" Relationship="KBaseModel.FK_Sensor_Device" FromRole="Device" ToRole="SensorDry" />
+  </EntityType>
+  <EntityType Name="DeviceHouse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Device" Type="Int32" Nullable="false" />
+    <Property Name="House" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Device1" Relationship="KBaseModel.FK_DeviceHouse_Device" FromRole="DeviceHouse" ToRole="Device" />
+    <NavigationProperty Name="House1" Relationship="KBaseModel.FK_DeviceHouse_House" FromRole="DeviceHouse" ToRole="House" />
+  </EntityType>
+  <EntityType Name="DeviceModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Device" Relationship="KBaseModel.FK_Device_DeviceModel" FromRole="DeviceModel" ToRole="Device" />
+  </EntityType>
+  <EntityType Name="Door">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="SensorDry" Relationship="KBaseModel.FK_SensorDry_Door" FromRole="Door" ToRole="SensorDry" />
+  </EntityType>
+  <EntityType Name="Error">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="DeviceId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Device" Relationship="KBaseModel.FK_Error_Device" FromRole="Error" ToRole="Device" />
+  </EntityType>
+  <EntityType Name="House">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="City" Type="Int32" Nullable="false" />
+    <Property Name="Street" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Housing" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="Org" Type="Int32" Nullable="false" />
+    <Property Name="Region" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="City1" Relationship="KBaseModel.FK_House_City" FromRole="House" ToRole="City" />
+    <NavigationProperty Name="DeviceHouse" Relationship="KBaseModel.FK_DeviceHouse_House" FromRole="House" ToRole="DeviceHouse" />
+    <NavigationProperty Name="Org1" Relationship="KBaseModel.FK_House_Org" FromRole="House" ToRole="Org" />
+    <NavigationProperty Name="Region1" Relationship="KBaseModel.FK_House_Region" FromRole="House" ToRole="Region" />
+    <NavigationProperty Name="HouseUser" Relationship="KBaseModel.FK_HouseUser_House" FromRole="House" ToRole="HouseUser" />
+  </EntityType>
+  <EntityType Name="HouseUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserProfile" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="House" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="KBaseModel.FK_HouseUser_User" FromRole="HouseUser" ToRole="AspNetUsers" />
+    <NavigationProperty Name="House1" Relationship="KBaseModel.FK_HouseUser_House" FromRole="HouseUser" ToRole="House" />
+  </EntityType>
+  <EntityType Name="NetworkStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Device" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Device1" Relationship="KBaseModel.FK_NetworkStatus_Device" FromRole="NetworkStatus" ToRole="Device" />
+  </EntityType>
+  <EntityType Name="Org">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="FullName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="LegalAddress" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="PostalAddress" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="Inn" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Kpp" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Region" Type="Int32" Nullable="false" />
+    <Property Name="City" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="KBaseModel.FK_AspNetUsers_Org" FromRole="Org" ToRole="AspNetUsers" />
+    <NavigationProperty Name="City1" Relationship="KBaseModel.FK_Org_City" FromRole="Org" ToRole="City" />
+    <NavigationProperty Name="House" Relationship="KBaseModel.FK_House_Org" FromRole="Org" ToRole="House" />
+    <NavigationProperty Name="Region1" Relationship="KBaseModel.FK_Org_Region" FromRole="Org" ToRole="Region" />
+  </EntityType>
+  <EntityType Name="Premises">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="SensorDry" Relationship="KBaseModel.FK_SensorDry_Premises" FromRole="Premises" ToRole="SensorDry" />
+  </EntityType>
+  <EntityType Name="ReasonForDisarming">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="SensorDry" Type="Int32" Nullable="false" />
+    <Property Name="Reason" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="UserProfile" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="AspNetUsers" Relationship="KBaseModel.FK_ReasonForDisarming_User" FromRole="ReasonForDisarming" ToRole="AspNetUsers" />
+    <NavigationProperty Name="SensorDry1" Relationship="KBaseModel.FK_ReasonForDisarming_SensorDry" FromRole="ReasonForDisarming" ToRole="SensorDry" />
+  </EntityType>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="House" Relationship="KBaseModel.FK_House_Region" FromRole="Region" ToRole="House" />
+    <NavigationProperty Name="Org" Relationship="KBaseModel.FK_Org_Region" FromRole="Region" ToRole="Org" />
+  </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="DivName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="SensorDry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Premises" Type="Int32" Nullable="false" />
+    <Property Name="Door" Type="Int32" Nullable="false" />
+    <Property Name="Device" Type="Int32" Nullable="false" />
+    <Property Name="Port" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Device1" Relationship="KBaseModel.FK_Sensor_Device" FromRole="SensorDry" ToRole="Device" />
+    <NavigationProperty Name="Door1" Relationship="KBaseModel.FK_SensorDry_Door" FromRole="SensorDry" ToRole="Door" />
+    <NavigationProperty Name="Premises1" Relationship="KBaseModel.FK_SensorDry_Premises" FromRole="SensorDry" ToRole="Premises" />
+    <NavigationProperty Name="ReasonForDisarming" Relationship="KBaseModel.FK_ReasonForDisarming_SensorDry" FromRole="SensorDry" ToRole="ReasonForDisarming" />
+    <NavigationProperty Name="SensorDryType" Relationship="KBaseModel.FK_SensorDry_SensorDryType" FromRole="SensorDry" ToRole="SensorDryType" />
+    <NavigationProperty Name="SensorDryData" Relationship="KBaseModel.FK_SensorDryData_SensorDry" FromRole="SensorDry" ToRole="SensorDryData" />
+  </EntityType>
+  <EntityType Name="SensorDryData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="SensorId" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="SensorDry" Relationship="KBaseModel.FK_SensorDryData_SensorDry" FromRole="SensorDryData" ToRole="SensorDry" />
+  </EntityType>
+  <EntityType Name="SensorDryType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Model" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="ValueType" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SensorDry" Relationship="KBaseModel.FK_SensorDry_SensorDryType" FromRole="SensorDryType" ToRole="SensorDry" />
+    <NavigationProperty Name="SensorDryValueType" Relationship="KBaseModel.FK_SensorDryType_SensorDryValueType" FromRole="SensorDryType" ToRole="SensorDryValueType" />
+  </EntityType>
+  <EntityType Name="SensorDryValueType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Value0" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Value1" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="SecurityStatus0" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="SecurityStatus1" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="SensorDryType" Relationship="KBaseModel.FK_SensorDryType_SensorDryValueType" FromRole="SensorDryValueType" ToRole="SensorDryType" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="KBaseModel.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="KBaseModel.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="KBaseModel.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="KBaseModel.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_Org">
+    <End Role="Org" Type="KBaseModel.Org" Multiplicity="1" />
+    <End Role="AspNetUsers" Type="KBaseModel.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Org">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="Org" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HouseUser_User">
+    <End Role="AspNetUsers" Type="KBaseModel.AspNetUsers" Multiplicity="1" />
+    <End Role="HouseUser" Type="KBaseModel.HouseUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseUser">
+        <PropertyRef Name="UserProfile" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReasonForDisarming_User">
+    <End Role="AspNetUsers" Type="KBaseModel.AspNetUsers" Multiplicity="1" />
+    <End Role="ReasonForDisarming" Type="KBaseModel.ReasonForDisarming" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReasonForDisarming">
+        <PropertyRef Name="UserProfile" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_House_City">
+    <End Role="City" Type="KBaseModel.City" Multiplicity="1" />
+    <End Role="House" Type="KBaseModel.House" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="House">
+        <PropertyRef Name="City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Org_City">
+    <End Role="City" Type="KBaseModel.City" Multiplicity="1" />
+    <End Role="Org" Type="KBaseModel.Org" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Org">
+        <PropertyRef Name="City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Device_DeviceModel">
+    <End Role="DeviceModel" Type="KBaseModel.DeviceModel" Multiplicity="1" />
+    <End Role="Device" Type="KBaseModel.Device" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeviceModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Device">
+        <PropertyRef Name="Model" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeviceHouse_Device">
+    <End Role="Device" Type="KBaseModel.Device" Multiplicity="1" />
+    <End Role="DeviceHouse" Type="KBaseModel.DeviceHouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Device">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeviceHouse">
+        <PropertyRef Name="Device" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Error_Device">
+    <End Role="Device" Type="KBaseModel.Device" Multiplicity="1" />
+    <End Role="Error" Type="KBaseModel.Error" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Device">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Error">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NetworkStatus_Device">
+    <End Role="Device" Type="KBaseModel.Device" Multiplicity="1" />
+    <End Role="NetworkStatus" Type="KBaseModel.NetworkStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Device">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NetworkStatus">
+        <PropertyRef Name="Device" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sensor_Device">
+    <End Role="Device" Type="KBaseModel.Device" Multiplicity="1" />
+    <End Role="SensorDry" Type="KBaseModel.SensorDry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Device">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SensorDry">
+        <PropertyRef Name="Device" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeviceHouse_House">
+    <End Role="House" Type="KBaseModel.House" Multiplicity="1" />
+    <End Role="DeviceHouse" Type="KBaseModel.DeviceHouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="House">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeviceHouse">
+        <PropertyRef Name="House" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SensorDry_Door">
+    <End Role="Door" Type="KBaseModel.Door" Multiplicity="1" />
+    <End Role="SensorDry" Type="KBaseModel.SensorDry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Door">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SensorDry">
+        <PropertyRef Name="Door" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_House_Org">
+    <End Role="Org" Type="KBaseModel.Org" Multiplicity="1" />
+    <End Role="House" Type="KBaseModel.House" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Org">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="House">
+        <PropertyRef Name="Org" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_House_Region">
+    <End Role="Region" Type="KBaseModel.Region" Multiplicity="1" />
+    <End Role="House" Type="KBaseModel.House" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="House">
+        <PropertyRef Name="Region" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HouseUser_House">
+    <End Role="House" Type="KBaseModel.House" Multiplicity="1" />
+    <End Role="HouseUser" Type="KBaseModel.HouseUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="House">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HouseUser">
+        <PropertyRef Name="House" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Org_Region">
+    <End Role="Region" Type="KBaseModel.Region" Multiplicity="1" />
+    <End Role="Org" Type="KBaseModel.Org" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Org">
+        <PropertyRef Name="Region" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SensorDry_Premises">
+    <End Role="Premises" Type="KBaseModel.Premises" Multiplicity="1" />
+    <End Role="SensorDry" Type="KBaseModel.SensorDry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Premises">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SensorDry">
+        <PropertyRef Name="Premises" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReasonForDisarming_SensorDry">
+    <End Role="SensorDry" Type="KBaseModel.SensorDry" Multiplicity="1" />
+    <End Role="ReasonForDisarming" Type="KBaseModel.ReasonForDisarming" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SensorDry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReasonForDisarming">
+        <PropertyRef Name="SensorDry" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SensorDry_SensorDryType">
+    <End Role="SensorDryType" Type="KBaseModel.SensorDryType" Multiplicity="1" />
+    <End Role="SensorDry" Type="KBaseModel.SensorDry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SensorDryType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SensorDry">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SensorDryData_SensorDry">
+    <End Role="SensorDry" Type="KBaseModel.SensorDry" Multiplicity="1" />
+    <End Role="SensorDryData" Type="KBaseModel.SensorDryData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SensorDry">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SensorDryData">
+        <PropertyRef Name="SensorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SensorDryType_SensorDryValueType">
+    <End Role="SensorDryValueType" Type="KBaseModel.SensorDryValueType" Multiplicity="1" />
+    <End Role="SensorDryType" Type="KBaseModel.SensorDryType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SensorDryValueType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SensorDryType">
+        <PropertyRef Name="ValueType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="KBaseModel.AspNetRoles" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="KBaseModel.AspNetUsers" Multiplicity="*" />
+  </Association>
+</Schema>

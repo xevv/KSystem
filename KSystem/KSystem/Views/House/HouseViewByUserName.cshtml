@@ -1,0 +1,25 @@
+﻿@model IEnumerable<KSystem.Model.HouseViewModel>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sensorNavigationContent .item').bind('click', function () {
+            if ($(this).hasClass("select")) {
+                $(this).removeClass("select");
+                $('#sensorMenu').empty();
+            } else {
+                $(this).addClass('select').siblings().removeClass('select');
+                startLoadingAnimation();
+                $('#sensorMenu').load('Sensor/GetSensorViewListByHouseId', { id: $(this).children().val() }, stopLoadingAnimation());
+            }
+        })
+    })
+</script>
+<div id="houseMenu" class="mainMenu">
+    @foreach (KSystem.Model.HouseViewModel item in Model)
+    { 
+        <div class="item">
+            @Html.HiddenFor(model => item.Id)
+            <div class="text">@item.Street @item.Number </div>
+            @Html.Lock(item.LabelForValue)
+        </div>
+    }
+</div>

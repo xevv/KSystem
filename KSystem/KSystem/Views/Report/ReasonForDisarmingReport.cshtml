@@ -1,0 +1,43 @@
+﻿@model KSystem.Model.Report.ReasonForDisarmingReportViewModel
+<div class="tableContainer">
+    <div class="headerReport">
+        <h2>Снятие с охраны</h2>
+        <div class="createDate">
+            <label>Дата создания:</label>
+            <label>@Model.CreateDate</label>
+        </div>
+    </div>
+    <div class="headerContent">
+        @Html.Pagination("ReasonForDisarmingReport", @Model.PageInfo)
+    </div>
+    <table class="reportTable">
+        <tr>
+            <th style="width: 250px;">@Html.DisplayNameFor(p => p.Report[0].User)</th>
+            <th style="width: 250px;">@Html.DisplayNameFor(p => p.Report[0].Object)</th>
+            <th style="width: 150px;">@Html.DisplayNameFor(p => p.Report[0].SensorType)</th>
+            <th style="width: 200px;">@Html.DisplayNameFor(p => p.Report[0].Reason)</th>
+            <th style="width: 120px;">@Html.DisplayNameFor(p => p.Report[0].Date)</th>
+        </tr>
+
+        @foreach (KSystem.Model.Report.ReasonForDisarmingReportResult item in Model.Report)
+        {
+            <tr>
+                <td>
+                    @item.User
+                </td>
+                <td>
+                    @item.Object
+                </td>
+                <td>
+                    @item.SensorType
+                </td>
+                <td style="width: 250px;">
+                    @item.Reason
+                </td>
+                <td style="text-align: right">
+                    @item.Date
+                </td>
+            </tr>
+        }
+    </table>
+</div>

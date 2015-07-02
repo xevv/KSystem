@@ -1,0 +1,210 @@
+﻿.containerWindow {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.transparent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.window {
+    background-color: #FFFFFF;
+    border: 1px solid #E4E8EE;
+    position: relative;
+    margin: 15% auto;
+    z-index: 2;
+}
+
+.windowContent {
+    padding-left: 15px;
+}
+
+    .windowContent input {
+        width: 150px;
+    }
+
+.windowHeader {
+    /*background:#F9F9F9;*/
+    color:#578EBE;
+    padding: 3px;
+    height: 28px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+
+    .windowHeader span {
+        font-size: 1.2em;
+        float: left;
+        padding-left: 6px;
+        margin-top: 5px;
+        font-weight: bold;
+        display: block;
+    }
+
+.containerForLabel {
+    float: left;
+}
+
+    .containerForLabel label {
+        float: right;
+    }
+
+.row {
+    position: relative;
+    height: 26px;
+}
+
+    .row label {
+        display: block;
+        float: left;
+        margin-right: 9px;
+    }
+
+.rowForDateInput {
+    position: relative;
+    height: 18px;
+    margin-bottom: 2px;
+}
+
+    .rowForDateInput label {
+        display: block;
+        float: left;
+        font-weight: bold;
+    }
+
+.rowHeader {
+    font-weight:bold;
+    padding:9px 10px 9px 8px;
+    position: relative;
+    height: 15px;
+    margin-bottom: 5px;
+    background:#EEEEEE;
+}
+
+.close {
+    margin-top:5px;
+    margin-right:5px;
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    float: right;
+    background-image: url("/Image/window/close.png");
+}
+
+.bottomContainer {
+    bottom: 0px;
+    position: absolute;
+    display: block;
+    height: 37px;
+    width: 100%;
+    padding-top:9px;
+    background:#F9F9F9;
+}
+
+input.button {
+    height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: block;
+    color: #FFFFFF;
+    float: right;
+    cursor: pointer;
+    border: none;
+}
+
+input.button.left {
+    margin-right:6px;
+}
+    input.button.blue {
+        background-color: #578EBE;
+    }
+    input.button.blue:hover {
+        background-color: #3379B5;
+    }
+    input.button.grey {
+        background-color: #FFFFFF;
+        color:inherit;
+    }
+    input.button.grey:hover {
+        background-color: #D3D3D3;
+    }
+
+    
+a.button {
+    margin-right: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    display: block;
+    color: #FFFFFF;
+    float: right;
+    cursor: pointer;
+    border: none;
+}
+
+a.button.left {
+    margin-right:6px;
+}
+    a.button.blue {
+        background-color: #578EBE;
+        
+    }
+    a.button.blue:hover {
+        background-color: #3379B5;
+    }
+
+    a.button.grey {
+        background-color: #DDDDDD;
+        color:inherit;
+    }
+    a.button.grey:hover {
+        background-color: #D3D3D3;
+    }
+
+input.timeInput {
+    width: 55px;
+}
+
+.inputArea {
+    border: 1px solid #E5E5E5;
+    resize: none;
+    padding: 5px;
+}
+
+.containerForInput {
+    float: left;
+}
+
+.validationMessageSummary {
+    padding-left: 8px;
+    color: red;
+    float: left;
+    font-weight: bold;
+}
+
+#reportSlideWindow {
+    border-right: 1px solid #c2c2c2;
+    position: absolute;
+    height: 100%;
+    background-color: #FFFFFF;
+    left: 1px;
+    z-index: 2;
+}
+
+#createReportContent {
+    padding: 8px;
+    margin-bottom:4px;
+}

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7a74fe933ea341d29f089ed9534fe2ab" Name="Diagram1">
+        <EntityTypeShape EntityType="KBaseModel.C__MigrationHistory" Width="1.5" PointX="8.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.AspNetRoles" Width="1.5" PointX="6" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.AspNetUserClaims" Width="1.5" PointX="10.5" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.AspNetUserLogins" Width="1.5" PointX="10.5" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.AspNetUsers" Width="1.5" PointX="8.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.City" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.Device" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.DeviceHouse" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.DeviceModel" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.Door" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.Error" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.House" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.HouseUser" Width="1.5" PointX="10.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.NetworkStatus" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.Org" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.Premises" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.ReasonForDisarming" Width="1.5" PointX="10.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.Region" Width="1.5" PointX="1.5" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.Report" Width="1.5" PointX="8.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.SensorDry" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.SensorDryData" Width="1.5" PointX="10.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.SensorDryType" Width="1.5" PointX="6" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.SensorDryValueType" Width="1.5" PointX="3.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KBaseModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="KBaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_AspNetUsers_Org" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_HouseUser_User" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_ReasonForDisarming_User" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_House_City" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_Org_City" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_Device_DeviceModel" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_DeviceHouse_Device" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_Error_Device" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_NetworkStatus_Device" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_Sensor_Device" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_DeviceHouse_House" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_SensorDry_Door" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_House_Org" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_House_Region" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_HouseUser_House" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_Org_Region" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_SensorDry_Premises" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_ReasonForDisarming_SensorDry" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_SensorDry_SensorDryType" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_SensorDryData_SensorDry" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.FK_SensorDryType_SensorDryValueType" ManuallyRouted="false" />
+        <AssociationConnector Association="KBaseModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

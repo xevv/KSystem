@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FA1985EB-86F2-4062-9B03-7A1501E2D699}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KModel</RootNamespace>
+    <AssemblyName>KModel</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entity\AspNetRoles.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\AspNetUserClaims.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\AspNetUserLogins.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\AspNetUsers.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\City.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\C__MigrationHistory.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Device.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DeviceHouse.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DeviceModel.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Door.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Error.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\House.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\HouseUser.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KBase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KBase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KBase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KBase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KBase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\NetworkStatus.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Org.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Premises.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ReasonForDisarming.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Region.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Report.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\SensorDry.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\SensorDryData.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\SensorDryType.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\SensorDryValueType.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\sysdiagrams.cs">
+      <DependentUpon>KBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\BaseRepository.cs" />
+    <Compile Include="Repository\DeviceRepository.cs" />
+    <Compile Include="Repository\HouseRepository.cs" />
+    <Compile Include="Repository\Interface\IDeviceRepository.cs" />
+    <Compile Include="Repository\Interface\IHouseRepository.cs" />
+    <Compile Include="Repository\Interface\IReportRepository.cs" />
+    <Compile Include="Repository\Interface\IRepository.cs" />
+    <Compile Include="Repository\Interface\IUserRepository.cs" />
+    <Compile Include="Repository\Interface\ISensorDryRepository.cs" />
+    <Compile Include="Repository\ReportRepository.cs" />
+    <Compile Include="Repository\SensorDryRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Entity\KBase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KBase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entity\KBase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KBase.edmx</DependentUpon>
+      <LastGenOutput>KBase.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Entity\KBase.edmx.diagram">
+      <DependentUpon>KBase.edmx</DependentUpon>
+    </None>
+    <None Include="Entity\KBase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KBase.edmx</DependentUpon>
+      <LastGenOutput>KBase.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

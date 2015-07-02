@@ -1,0 +1,112 @@
+﻿@model KSystem.Model.SettingsViewModel
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script type="text/javascript">
+
+    $('#containerWindowModal .close, #containerWindowModal #cancel').bind('click', function () {
+        $('#containerWindowModal').remove();
+    })
+
+    function OnSuccessForm(data) {
+        if (data.responseJSON.result == "OK") {
+            $('#containerWindowModal').remove();
+        }
+    }
+
+    $('#windowModal .checkbox').bind('click', function () {
+        if ($(this).hasClass("on")) {
+            $(this).removeClass("on").addClass("off").children().val(0);
+        } else {
+            $(this).removeClass("off").addClass("on").children().val(1);
+        }
+    })
+
+</script>
+@using (Ajax.BeginForm(new AjaxOptions
+{
+    Url = @Url.Action("SetSettings"),
+    HttpMethod = "POST",
+    OnComplete = "OnSuccessForm",
+    UpdateTargetId = "windowModal",
+    LoadingElementId = "loadContainer"
+}))
+{
+    
+    <div class="windowHeader">
+        <span>
+            Настройки
+            @Html.HiddenFor(model => model.UserId)
+        </span>
+        <div class="close"></div>
+    </div>
+    <div class="windowContent">
+        <div class="containerForLabel">
+            <div class="row">
+                @Html.LabelFor(model => model.FIO)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.Org)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.Email)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.Phone)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.NotificationPhone)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.CallTimeStart)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.CallTimeEnd)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.NotificationEmail)
+            </div>
+        </div>
+        <div class="containerForInput">
+            <div class="row">
+                <span>
+                    @Html.DisplayFor(model => model.FIO)
+                    @Html.HiddenFor(model => model.FIO)
+                </span>
+            </div>
+            <div class="row">
+                <span>
+                    @Html.DisplayFor(model => model.Org)
+                    @Html.HiddenFor(model => model.Org)
+                </span>
+            </div>
+            <div class="row">
+                @Html.TextBoxFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div class="row">
+                @Html.TextBoxFor(model => model.Phone)
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+            <div class="row">
+                @Html.ImageCheckbox(model => model.NotificationPhone, "checkbox")
+            </div>
+
+            <div class="row">
+                @Html.TextBoxFor(model => model.CallTimeStart, new { @class = "timeInput" })
+                @Html.ValidationMessageFor(model => model.CallTimeStart)
+            </div>
+            <div class="row">
+                @Html.TextBoxFor(model => model.CallTimeEnd, new { @class = "timeInput" })
+                @Html.ValidationMessageFor(model => model.CallTimeEnd)
+            </div>
+            <div class="row">
+                @Html.ImageCheckbox(model => model.NotificationEmail, "checkbox")
+            </div>
+        </div>
+    </div>
+    <div class="bottomContainer">
+        <div class="validationMessageSummary">@Html.ValidationSummary(true)</div>
+        <a id="cancel" class="button grey">Отмена</a>
+        <input type="submit" id="ok" class="button blue left" value="Сохранить" />
+    </div>
+}

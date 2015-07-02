@@ -1,0 +1,56 @@
+﻿@model KSystem.Model.ReasonForDisarmingViewModel
+<script type="text/javascript">
+    $('#containerWindowModal .close, #containerWindowModal #cancel').bind('click', function () {
+        $('#containerWindowModal').remove();
+    })
+    function OnSuccessForm(data) {
+        if (data.responseText == "OK") {
+            $('#containerWindowModal').remove();
+            $('#sensorMenu').load('Sensor/GetSensorViewListByHouseId', { id: "@Model.HouseId" });
+        }
+    }
+</script>
+
+@using (Ajax.BeginForm(new AjaxOptions
+{
+    Url = @Url.Action("AddReasonForDisarming"),
+    HttpMethod = "POST",
+    OnComplete = "OnSuccessForm",
+    UpdateTargetId = "windowModal",
+    LoadingElementId = "loadContainer"
+}))
+{
+    @Html.HiddenFor(model => model.SensorDryId)
+    @Html.HiddenFor(model => model.HouseId)
+    @Html.HiddenFor(model => model.Door)
+    @Html.HiddenFor(model => model.UserId)
+    <div class="windowHeader">
+        <span>Снятие с охраны (@Model.Door)</span>
+        <div class="close"></div>
+    </div>
+    <div class="windowContent">
+        <div class="containerForLabel">
+            <div class="row">
+                <label>Время:</label>
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.Reason)
+            </div>
+        </div>
+        <div class="containerForInput">
+            <div class="row">
+                <label>@DateTime.Now</label>
+            </div>
+            <div class="row" style=height:135px>
+                @Html.TextAreaFor(model => model.Reason, new { @id = "ReasonTextBox", @class = "inputArea", @style = "width:409px; height:120px;" })
+            </div>
+            <div class="row">
+                @Html.ValidationMessageFor(model => model.Reason)
+            </div>
+        </div>
+    </div>
+    <div class="bottomContainer">
+        <a id="cancel" class="button blue">Отмена</a>
+        <input type="submit" id="ok" class="button blue left" value="Снять с охраны" />
+    </div>
+}

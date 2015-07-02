@@ -1,0 +1,32 @@
+﻿
+#load{
+    display:block;
+    position:absolute;
+    top:50%;
+    left:50%;
+    background-image:url("/Image/loader.gif");
+    background-repeat:no-repeat;
+    width:32px;
+    height:32px;
+    float:left
+}
+
+#loadContainer {
+    display:block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000
+
+}
+
+.transparent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;  
+}

@@ -1,0 +1,87 @@
+﻿#messageMenu {
+    height: 200px;
+    width: 100%;
+    border-top: 1px solid #c2c2c2;
+    position: absolute;
+    bottom: 0;
+}
+
+#headerMessageMenu {
+    padding-top: 5px;
+    height: 30px;
+}
+
+    #headerMessageMenu span {
+        float: left;
+        margin-left: 7px;
+        margin-top: 7px;
+    }
+
+#tabsForInterval {
+    margin-left:10px;
+    float: left;
+}
+
+    #tabsForInterval .item {
+        display: inline;
+        margin-right: 4px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        color: #3175BC;
+        float: right;
+        cursor: pointer;
+    }
+
+        #tabsForInterval .item:hover {
+            background-color: #EEEEEE;
+        }
+
+        #tabsForInterval .item.select {
+            background-color: #578EBE;
+            color: #FFFFFF;
+        }
+
+
+
+
+#hideMenu {
+    position: absolute;
+    bottom: 60px;
+    right: 0px;
+    display: none;
+}
+
+#message > .content {
+    border: 1px #EEEEEE solid;
+    padding: 7px;
+    margin: 5px;
+    margin-left: 6px;
+    overflow: auto;
+    height: 90px;
+}
+
+    #message > .content > .row {
+        padding: 3px 3px 1px 3px;
+        height: 18px;
+        border-bottom: 1px solid #F4F6F9;
+    }
+
+        #message > .content > .row span {
+            color: #FFFFFF;
+            padding: 2px 5px 2px 5px;
+            margin-left: 3px;
+        }
+
+            #message > .content > .row span.warning {
+                background-color: #E35B5A;
+            }
+
+            #message > .content > .row span.normal {
+                background-color: #1BBC9B;
+            }
+
+            #message > .content > .row span.networkStatus {
+                background-color: #DFBA49;
+            }

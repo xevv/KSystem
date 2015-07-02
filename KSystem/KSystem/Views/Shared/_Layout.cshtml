@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/CSS/slideMenu.css">
+   
+    @Styles.Render("~/bundles/css")
+    @Scripts.Render("~/bundles/scripts")
+    <script src="~/signalr/hubs"></script>
+    <script type="text/javascript">
+        var User = "@User.Identity.Name.ToString()"
+        $(document).ready(function () {
+            $('#sensorMenu').height(($("#content").height() - 10) - $("#messageMenu").innerHeight());
+            $("#settings").bind('click', function () {
+                startLoadingAnimation();
+                showModalWindow(550, 310);
+                $('#windowModal').load('User/Settings', stopLoadingAnimation());
+            })
+
+            //$('#headerMenu .item').bind('mouseover', function () {
+            //    $(this).children(".description").css("border-bottom", "none");
+            //})
+
+            //$('#headerMenu .item').bind('mouseout', function () {
+            //    $(this).children(".description").css("border-bottom", "1px dashed #646464");
+            //})
+
+            $("#sensor").bind("click", function () {
+                if (!$(this).hasClass("on")) {
+                    $("#reportBlockContent").hide();
+                    $("#reportNavigationContent").hide();
+                    $("#sensorBlockContent").show();
+                    $("#sensorNavigationContent").show();
+                }
+            })
+
+            $("#report").bind("click", function () {
+                if (!$(this).hasClass("on")) {
+                    $("#sensorBlockContent").hide();
+                    $("#sensorNavigationContent").hide();
+                    $("#reportBlockContent").show();
+                    $("#reportNavigationContent").show();
+                }
+            })
+
+            $('#headerMenu .item').bind('click', function () {
+                $(this).addClass('on').siblings().removeClass('on')
+            })
+
+            $(function () {
+                $(window).resize(function () {
+                    $('#sensorMenu').height(($("#content").height() - 10) - $("#messageMenu").innerHeight());
+                });
+            });
+        })
+
+        $(function () {
+            var SensorHub = $.connection.SensorHub;
+            SensorHub.client.updateSensor = function (data) {
+                var currentHouse = $("#houseMenu .item.select").children().val();
+                if (data.HouseId == currentHouse && currentHouse != undefined) {
+                    $('#sensorMenu').load('Sensor/GetSensorViewListByHouseId', { id: currentHouse });
+                }
+                $("#message").load("Sensor/SensorDryDataForPeriod");
+                //var item = $("#slideMenu :input[value='" + data.SensorId + "']").parent(".item");
+                //var houseItem = $("#houseMenu :input[value='" + data.HouseId + "']").parent(".item");
+                //if (data.Warning == 0) {
+                //    $(houseItem).children(".iconContainer").children().removeClass().addClass("lock off");
+                //} else {
+                //    $(houseItem).children(".iconContainer").children().removeClass().addClass("lock on");
+                //}
+                //$(item).children(".info").children(".secondLine").html("Последнее обновление: " + data.Date)
+                //if (data.Data == 1) {
+                //    $(item).children(".value").removeClass().addClass("value normal");
+                //    $(item).children(".value").children().html("Закрыто");
+                //} else {
+                //    $(item).children(".value").removeClass().addClass("value warning");
+                //    $(item).children(".value").children().html("Открыто");
+                //}
+            }
+
+            SensorHub.client.offlineDevice = function (houseId) {
+                //$("#data_Device[value='" + deviceId + "']").parent(".item").children(".blockForIcon").children(".status").removeClass().addClass("status offline");
+                var currentHouse = $("#houseMenu .item.select").children().val();
+                if (houseId == currentHouse && currentHouse != undefined) {
+                    $('#sensorMenu').load('Sensor/GetSensorViewListByHouseId', { id: currentHouse });
+                }
+                $("#message").load("Sensor/SensorDryDataForPeriod");
+            };
+
+            SensorHub.client.onlineDevice = function (houseId) {
+                //$("#data_Device[value='" + deviceId + "']").parent(".item").children(".blockForIcon").children(".status").removeClass().addClass("status online");
+                var currentHouse = $("#houseMenu .item.select").children().val();
+                if (houseId == currentHouse && currentHouse != undefined) {
+                    $('#sensorMenu').load('Sensor/GetSensorViewListByHouseId', { id: currentHouse });
+                }
+                $("#message").load("Sensor/SensorDryDataForPeriod");
+            };
+
+            $.connection.hub.start().done(function () {
+                SensorHub.server.register(User);
+            });
+        })
+
+    </script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div id="loadContainer" style="display: none;">
+        <div id="load"></div>
+        <div class="transparent"></div>
+    </div>
+    <div id="container">
+        <div id="header">
+            <div id="headerMainMenu">
+                <input id="findInput" type="text" placeholder="Поиск...">
+            </div>
+            <div id="headerMenu">
+                <div class="item on" id="sensor">
+                    <div class="sensorImage"></div>
+                    <div class="description">Датчики</div>
+                </div>
+                @*<div class="item">
+                    <div class="mapImage"></div>
+                    <div class="description">Карта</div>
+                </div>*@
+                <div class="item" id="report">
+                    <div class="reportImage"></div>
+                    <div class="description">Отчеты</div>
+                </div>
+                @*                <div class="user">Добро пожаловать @User.Identity.Name</div>*@
+            </div>
+            <div id="userProfile">
+                <div id="settings" class="item">
+                    <div class="settingsImage"></div>
+                    <div class="description">Настройки</div>
+                </div>
+                @Html.ActionImage(@Url.Action("LogOff", "Account"), "exitImage", "Выход")
+            </div>
+        </div>
+        <div id="middle">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

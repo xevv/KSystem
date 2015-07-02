@@ -1,0 +1,36 @@
+﻿@model IEnumerable<KModel.Entity.Report>
+<div class="mainMenu">
+    @foreach (KModel.Entity.Report item in Model)
+    { 
+        <div id="@item.DivName" class="item">
+            <div class="text">@item.DisplayName</div>
+        </div>
+    }
+</div>
+<script type="text/javascript">
+
+    $('#reportNavigationContent .item').bind('click', function () {
+        var $this = $(this);
+        if ($this.hasClass("select")) {
+            $this.removeClass("select");
+            $("#reportSlideWindow").empty();
+            $("#reportSlideWindow").animate({ width: "0px" }, "fast",
+                function () {
+                    $("#reportSlideWindow").css("display", "none");  
+                });
+        } else {
+            $this.addClass('select').siblings().removeClass('select');
+            startLoadingAnimation();
+            $("#reportSlideWindow").empty();
+            if ($("#reportSlideWindow").css("display") == "none") {
+                $("#reportSlideWindow").css("display", "block");
+                $("#reportSlideWindow").animate({ width: "300px" }, "fast", function () {
+                    if ($this.attr("id") == "ReasonForDisarming") {
+                        $("#reportSlideWindow").load("Report/CreateReasonForDisarming", stopLoadingAnimation())
+                    }
+                });
+            }
+            
+        }
+    })
+</script>

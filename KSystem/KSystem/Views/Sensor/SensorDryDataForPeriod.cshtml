@@ -1,0 +1,19 @@
+﻿@model IEnumerable<KSystem.Model.SummaryLastDataViewModel>
+
+<div class="content">
+    @foreach (KSystem.Model.SummaryLastDataViewModel item in Model)
+    {
+        if (@item.Value == 0)
+        {
+        <div class="row">@item.Date @item.Message <span class="warning">@item.StringValue</span></div>
+        }
+        else if (@item.Value == 1)
+        {
+        <div class="row">@item.Date @item.Message <span class="normal">@item.StringValue</span></div>
+        }
+        else if (@item.Value == 2)
+        { 
+        <div class="row">@item.Date @item.Message <span class="networkStatus">@item.StringValue</span></div>
+        }
+    }
+</div>

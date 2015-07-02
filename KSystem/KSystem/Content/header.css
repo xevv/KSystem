@@ -1,0 +1,89 @@
+﻿#userProfile {
+    float:right;
+}
+
+#headerMenu {
+    float:left;
+    display:inline;
+}
+
+#headerMenu > .item, #userProfile > .item {
+    float:left;
+    padding:11px;
+    border-right:1px solid #C2C2C2;
+    cursor:pointer;
+}
+
+#headerMenu > .item.on {
+    background-color:#C2C2C2;
+}
+.description {
+    margin-top:4px;
+    margin-left:4px;
+    float:left;
+    font-size:1.2em;
+    color:#646464;
+    text-decoration: none;
+    border-bottom: 1px dashed #646464; 
+}
+
+.mapImage,
+.reportImage, 
+.sensorImage, 
+.settingsImage,
+.exitImage {
+    float:left;
+}
+
+.settingsImage {
+    width:25px;
+    height:25px;
+    background-image: url("/Image/headerMenu/settings.png");
+}
+
+.reportImage {
+    width:20px;
+    height:26px;
+    background-repeat:no-repeat;
+    background-image: url("/Image/headerMenu/report.png");
+}
+
+.mapImage {
+    width:26px;
+    height:26px;
+    background-image: url("/Image/headerMenu/map.png");
+}
+
+.sensorImage {
+    width:22px;
+    height:26px;
+    background-image: url("/Image/headerMenu/sensor.png");
+}
+
+.exitImage {
+    width:26px;
+    height:26px;
+    background-image: url("/Image/headerMenu/exit.png");
+}
+
+#headerMainMenu {
+    float:left;
+    width:280px;
+    height:48px;
+    background-color:#CFCFCF;
+    border-right: 1px solid #c2c2c2;
+}
+
+input#findInput {
+    margin-top:12px;
+    margin-left:10px;
+    color:#686868;
+    background-color: #FFFFFF;
+    background-repeat:no-repeat;
+    width:248px;
+    height:18px;
+    padding:2px;
+    padding-left:6px;
+    position:relative;
+    border:1px solid #C2C3C4;
+}

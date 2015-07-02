@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Index";
+            //Layout = "~/Views/Shared/_Layout.cshtml";   
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var messageMenuHeight = parseInt($("#messageMenu").css("height"), 10);
+        $("#hide").bind("click", function () {
+            $("#messageMenu").slideUp(200);
+            $("#hideMenu").show();
+            $('#sensorMenu').height($("#content").height());
+        })
+
+        $("#hideMenu").bind("click", function () {
+            $("#messageMenu").slideDown(200);
+            $("#hideMenu").hide();
+            $('#sensorMenu').height(($("#content").height() - 10) - messageMenuHeight);
+        })
+
+        $("#tabsForInterval .item").bind("click", function () {
+            $(this).addClass("select").siblings().removeClass("select");
+            startLoadingAnimation();
+            $('#message').load("Sensor/SensorDryDataForPeriod", { period: $(this).attr("id") }, stopLoadingAnimation());
+        })
+    })
+</script>
+<div id="navigation">
+    <div id="sensorNavigationContent">
+        @Html.Action("HouseViewByUserName", "House")
+    </div>
+    <div id="reportNavigationContent" style="display: none">
+        @Html.Action("GetReports", "Report")
+    </div>
+</div>
+<div id="content">
+    <div id="sensorBlockContent">
+        <div id="sensorMenu"></div>
+        <div id="messageMenu">
+            <div id="headerMessageMenu">
+                <span>События за:</span>
+                <div id="tabsForInterval">
+                    <div id="week" class="item">неделю</div>
+                    <div id="twenty-four" class="item select">сегодня</div>
+                </div>
+                <a id="hide" class="button blue">Скрыть</a>
+            </div>
+            <div id="message">
+                @Html.Action("SensorDryDataForPeriod", "Sensor")
+            </div>
+        </div>
+        <div id="hideMenu"><a id="show" class="button blue">Показать панель сообщений</a></div>
+    </div>
+    <div id="reportBlockContent">
+        <div id="reportSlideWindow" style="display: none"></div>
+        <div id="forReportBlock"></div>
+    </div>
+</div>

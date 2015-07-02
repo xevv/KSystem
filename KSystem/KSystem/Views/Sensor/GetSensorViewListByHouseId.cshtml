@@ -1,0 +1,78 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        $('#slideMenu .arrow').bind('click', function () {
+            if ($(this).hasClass("down")) {
+                $(this).parent().next(".block").slideDown(200);
+                $(this).removeClass("down").addClass("up");
+            } else {
+                $(this).removeClass("up").addClass("down");
+                $(this).parent().next(".block").slideUp(200);
+            }
+        })
+    })
+
+    $('#slideMenu .switch').bind('click', function () {
+        var sensorId = $(this).parent().parent().children("#data_Id").val();
+        startLoadingAnimation()
+        if ($(this).hasClass("on")) {
+            showModalWindow(550, 280);
+            $('#windowModal').load('Sensor/ReasonForDisarming', { sensorId: sensorId },
+            stopLoadingAnimation());
+        } else {
+            $(this).removeClass("off").addClass("on");
+            $(this).children().val(1);
+            $.ajax({
+                data: { SensorDry: sensorId, Status: 1 },
+                url: "/Sensor/UpdateSensorDryStatus",
+                type: "POST",
+                success: stopLoadingAnimation()
+            });
+        }
+    })
+
+</script>
+@model IEnumerable<KSystem.Model.SensorDryRoomViewModel>
+<div id="slideMenu">
+    @foreach (KSystem.Model.SensorDryRoomViewModel item in Model)
+    {
+        <div class="item">
+            <div class="arrow up"></div>
+            <span>@item.Room</span>
+        </div>
+        <div class="block">
+            @foreach (KSystem.Model.SensorDryViewModel data in item.Sensor)
+            { 
+                <div class="item">
+                    @Html.HiddenFor(model => data.Id)
+                    @Html.HiddenFor(model => data.Device)
+                    <div class="blockForIcon">
+                        @Html.Online(data.Online)
+                        @Html.ImageCheckbox(model => data.Status, "switch")
+                    </div>
+                    <div class="info">
+                        <div class="firstLine">@data.Door</div>
+                        <div class="secondLine">Последнее обновление: @data.Time</div>
+                    </div>
+                    @if (@data.Value == 0)
+                    {
+                        <div class="value warning">
+                            <div style="font-weight: bold">@data.DisplayValue</div>
+                        </div>
+                    }
+                    else if (@data.Value == 1)
+                    {
+                        <div class="value normal">
+                            <div style="font-weight: bold">@data.DisplayValue</div>
+                        </div>
+                    }
+                    else if (@data.Value == 2)
+                    { 
+                        <div class="value undefined">
+                            <div style="font-weight: bold">@data.DisplayValue</div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
